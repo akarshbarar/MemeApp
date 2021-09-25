@@ -1,5 +1,5 @@
 import 'dart:convert';
-
+import 'package:share_plus/share_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -66,10 +66,20 @@ class _HomePageState extends State<HomePage> {
                 });
               },
               child: Text("NEXT"),
+            ),
+            MaterialButton(
+              onPressed: () => _onShare(context),
+              child: Text("Share"),
             )
           ],
         ),
       ),
     ));
+  }
+
+  void _onShare(BuildContext context) async {
+    print("Inside on share");
+    await Share.share("Hello World !");
+    print("Shared");
   }
 }
